@@ -42,7 +42,7 @@
 {% block page_content %}
 <div class="introduction">
 	{% if introduction_text %}
-	<p class="text-muted">{{ introduction_text }}</p>
+	<p class="text-muted">{{ _(introduction_text) }}</p>
 	{% endif %}
 </div>
 <div class="form-message hide"></div>
@@ -129,7 +129,7 @@
 			{% for option in field.options.split("\n") -%}
 			<option value="{{ option }}"
 				{{ 'selected="selected"' if value(field, _doc)==option else '' }}>
-				{{ option }}</option>
+				{{ _(option) }}</option>
 			{%- endfor %}
 		</select>
 		{{ help(field) }}
@@ -265,6 +265,7 @@
 		<div class="section">
 			{% if section.label %}
 			<h5 class='uppercase'>{{ _(section.label) }}</h5>
+			<span class="help-block small text-muted">{{ _(section.description) }}</span>
 			{% endif %}
 			<div class="row">
 					{% for column in section.columns %}
